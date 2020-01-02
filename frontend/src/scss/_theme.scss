@@ -1,0 +1,46 @@
+$white: #ffffff;
+$grey: rgba(255, 255, 255, 0.5);
+$primary: #ffa86a;
+
+$color-bg: #222129;
+$color-href: #b46382;
+$color-font: #ffffff;
+
+// ========================================================
+// : COLORS
+// ========================================================
+body {
+  background-color: $color-bg;
+  color: $color-font;
+}
+
+a {
+  color: $color-href;
+}
+
+// ========================================================
+// : FONT
+// ========================================================
+html {
+  font-family: 'Fira Code', monospace;
+  font-size: 100%;
+}
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: 'Fira Code VF', monospace;
+  }
+}
+body {
+  font-size: 1em;
+  font-family: inherit;
+}
+// *,:before,:after{font-family:inherit;}
+
+// ========================================================
+// : SIZES
+// ========================================================
+html,
+body,
+#root {
+  height: 100%;
+}
