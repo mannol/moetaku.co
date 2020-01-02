@@ -1,15 +1,15 @@
 .giphy-feature {
   width: rem(500px);
   height: rem(318px);
-  position: fixed;
 
   &__src {
     height: rem(30px);
     font-size: rem(12px);
     float: right;
   }
+
   &__img {
-    border: solid rem(0.5px) $grey;
+    border: solid rem(1px) $grey;
     border-top-left-radius: rem(6px);
     border-top-right-radius: rem(6px);
   }

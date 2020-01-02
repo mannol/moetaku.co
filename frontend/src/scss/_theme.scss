@@ -1,5 +1,6 @@
 $white: #ffffff;
-$grey: rgba(255, 255, 255, 0.5);
+$grey: #919094;
+$dark-grey: #4E4d54;
 $primary: #ffa86a;
 
 $color-bg: #222129;
@@ -14,8 +15,34 @@ body {
   color: $color-font;
 }
 
+input {
+  background-color: transparent;
+  color: $color-font;
+
+  &::-webkit-input-placeholder {
+    color: $grey;
+  }
+
+  &:-ms-input-placeholder {
+    color: $grey;
+  }
+
+  &::placeholder {
+    color: $grey;
+  }
+}
+
 a {
   color: $color-href;
+}
+
+input,
+textarea,
+button {
+  border: none;
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
 }
 
 // ========================================================
@@ -25,15 +52,18 @@ html {
   font-family: 'Fira Code', monospace;
   font-size: 100%;
 }
+
 @supports (font-variation-settings: normal) {
   html {
     font-family: 'Fira Code VF', monospace;
   }
 }
+
 body {
   font-size: 1em;
   font-family: inherit;
 }
+
 // *,:before,:after{font-family:inherit;}
 
 // ========================================================

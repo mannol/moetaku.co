@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 const Component = ({ src, giphySrc }) => (
   <div className="giphy-feature">
     <img className="giphy-feature__img" alt="Feature Gif" src={src} />
-    <a className="giphy-feature__src" href={giphySrc} target="_blank">
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      className="giphy-feature__src"
+      href={giphySrc}
+    >
       via GIPHY
     </a>
   </div>
@@ -15,4 +20,4 @@ Component.propTypes = {
   giphySrc: PropTypes.string.isRequired,
 };
 
-export default Component;
+export default React.memo(Component);
