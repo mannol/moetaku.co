@@ -70,7 +70,7 @@ const Component = ({
 Component.propTypes = {
   className: PropTypes.string.isRequired,
   destinationUrl: PropTypes.string.isRequired,
-  proxyUrl: PropTypes.string.isRequired,
+  proxyUrl: PropTypes.string,
   buttonName: PropTypes.string.isRequired,
   onToggleExpand: PropTypes.func.isRequired,
   onStop: PropTypes.func.isRequired,

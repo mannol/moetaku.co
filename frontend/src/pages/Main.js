@@ -1,4 +1,8 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { selectDestinationUrl } from '../redux/selectors';
+import { setDestinationUrl } from '../redux/actions';
 
 import GiphyFeature from '../components/GiphyFeature';
 import Input from '../components/Input';
@@ -6,8 +10,16 @@ import Terminal from '../components/Terminal';
 
 const handleNoop = () => {};
 const Page = () => {
-  const [url, setUrl] = useState();
-  const handleStop = useCallback(() => setUrl(null), [setUrl]);
+  const dispatch = useDispatch();
+  const destinationUrl = useSelector(selectDestinationUrl);
+
+  const handleSetDestinationUrl = useCallback(
+    (url) => dispatch(setDestinationUrl(url)),
+    [dispatch],
+  );
+  const handleStopProxy = useCallback(() => dispatch(setDestinationUrl(null)), [
+    dispatch,
+  ]);
 
   return (
     <div className="page">
@@ -16,20 +28,20 @@ const Page = () => {
           src="https://media.giphy.com/media/4KayUq2zLBjby/giphy.gif"
           giphySrc="https://giphy.com/gifs/animated-pixel-art-4KayUq2zLBjby"
         />
-        {url ? (
+        {destinationUrl ? (
           <Terminal
             className="page__terminal"
-            url="http://localhost:8080"
+            destinationUrl={destinationUrl}
             buttonName="STOP"
             onToggleExpand={handleNoop}
-            onStop={handleStop}
+            onStop={handleStopProxy}
           />
         ) : (
           <Input
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={true}
             className="page__input"
-            onSubmit={setUrl}
+            onSubmit={handleSetDestinationUrl}
             placeholder="Enter the destination URL, i.e. http://localhost:8080"
             buttonName="START"
           />

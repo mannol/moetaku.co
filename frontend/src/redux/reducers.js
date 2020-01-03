@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-// import { reducer as confirmEmail } from './modules/confirmEmail';
+import { reducer as destinationUrl } from './modules/destinationUrl';
 
 export default (asyncReducers) => {
   return combineReducers({
-    // confirmEmail,
+    destinationUrl,
     ...asyncReducers,
   });
 };

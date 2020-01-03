@@ -1,1 +1,1 @@
-// export { confirmEmail } from './modules/confirmEmail';
+export { setDestinationUrl } from './modules/destinationUrl';

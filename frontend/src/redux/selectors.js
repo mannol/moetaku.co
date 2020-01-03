@@ -1,1 +1,1 @@
-// export { selectConfirmEmailRequest } from './modules/confirmEmail';
+export { selectDestinationUrl } from './modules/destinationUrl';
