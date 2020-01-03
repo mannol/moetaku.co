@@ -1,5 +1,3 @@
-// import { sagas as confirmEmail } from './modules/confirmEmail';
+import { sagas as connection } from './modules/connection';
 
-export default [
-  // confirmEmail,
-];
+export default [connection];

@@ -6,13 +6,16 @@ import {
   selectProxyUrl,
   selectLogs,
 } from '../redux/selectors';
-import { setDestinationUrl } from '../redux/actions';
+import {
+  createConnection,
+  closeConnection,
+  updateLogLine,
+} from '../redux/actions';
 
 import GiphyFeature from '../components/GiphyFeature';
 import Input from '../components/Input';
 import Terminal from '../components/Terminal';
 
-const handleNoop = () => {};
 const Page = () => {
   const dispatch = useDispatch();
 
@@ -21,12 +24,16 @@ const Page = () => {
   const logs = useSelector(selectLogs);
 
   const handleSetDestinationUrl = useCallback(
-    (url) => dispatch(setDestinationUrl(url)),
+    (url) => dispatch(createConnection(url)),
     [dispatch],
   );
-  const handleStopProxy = useCallback(() => dispatch(setDestinationUrl(null)), [
+  const handleStopProxy = useCallback(() => dispatch(closeConnection()), [
     dispatch,
   ]);
+  const handleLogLineToggleExpand = useCallback(
+    (id, nextState) => dispatch(updateLogLine(id, { isExpanded: nextState })),
+    [dispatch],
+  );
 
   return (
     <div className="page">
@@ -41,7 +48,7 @@ const Page = () => {
             destinationUrl={destinationUrl}
             proxyUrl={proxyUrl}
             buttonName="STOP"
-            onToggleExpand={handleNoop}
+            onToggleExpand={handleLogLineToggleExpand}
             onStop={handleStopProxy}
             logs={logs}
           />

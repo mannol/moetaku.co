@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { UnmountClosed } from 'react-collapse';
@@ -14,6 +14,7 @@ const Component = ({
   status,
   duration,
   isExpanded,
+  onToggleExpand,
 }) => {
   const isComplete = status !== constants.LOG_STATUS_PENDING;
   const isSuccess = status === constants.LOG_STATUS_SUCCESS;
@@ -22,9 +23,18 @@ const Component = ({
     constants.LOG_STATUS_TIMEOUT,
   ].includes(status);
 
+  const handleToggleExpand = useCallback(
+    () => onToggleExpand(id, !isExpanded),
+    [id, isExpanded, onToggleExpand],
+  );
+
   return (
     <div className="log-line">
-      <button className="log-line__status-button" disabled={!isComplete}>
+      <button
+        className="log-line__status-button"
+        disabled={!isComplete}
+        onClick={handleToggleExpand}
+      >
         {!isComplete && <FiPlay className="log-line__pending-icon" />}
         {isComplete && (
           <div
@@ -57,7 +67,7 @@ const Component = ({
 };
 
 Component.defaultProps = {
-  details: ['Example details', 'Another status line'],
+  details: [],
 };
 
 Component.propTypes = {
@@ -72,8 +82,8 @@ Component.propTypes = {
     constants.LOG_STATUS_TIMEOUT,
   ]),
   duration: PropTypes.number.isRequired,
-  onToggleExpand: PropTypes.func.isRequired,
   isExpanded: PropTypes.bool,
+  onToggleExpand: PropTypes.func.isRequired,
 };
 
 export default Component;
