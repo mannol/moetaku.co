@@ -1,21 +1,26 @@
 .page {
-    width: 100%;
-    height: 100%;
+  width: 100%;
 
+  display: flex;
+  justify-content: center;
+
+  &__container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 
-    &__container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    width: rem(768px);
+    padding-top: rem(112px);
+    padding-bottom: rem(88px);
+  }
 
-        width: rem(768px);
-        padding-top: rem(112px);
-    }
+  &__input {
+    margin-top: rem(100px);
+    margin-bottom: rem(12px);
+  }
 
-    &__input {
-        margin-top: rem(64px);
-        margin-bottom: rem(12px);
-    }
+  &__terminal {
+    margin-top: rem(64px);
+    margin-bottom: rem(12px);
+  }
 }

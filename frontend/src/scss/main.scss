@@ -3,9 +3,12 @@
 @import '~sass-rem';
 @import '~normalize.css';
 
+@import 'mixins';
 @import 'theme';
 
 @import 'components/giphy-feature';
 @import 'components/input';
+@import 'components/terminal';
+@import 'components/log-line';
 
 @import 'pages/main';

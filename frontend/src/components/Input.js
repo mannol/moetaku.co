@@ -5,25 +5,25 @@ import classnames from 'classnames';
 const Component = ({ className, buttonName, onSubmit, ...inputProps }) => {
   const inputRef = useRef();
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     if (inputRef.current) {
       onSubmit(inputRef.current.value);
     }
-  };
-  const handleChange = (e) => {
-    if (e.key === 'Enter') {
-      onSubmit(e.target.value);
-    }
-  };
+  }, [onSubmit]);
+
+  const handleChange = useCallback(
+    (e) => {
+      if (e.key === 'Enter') {
+        onSubmit(e.target.value);
+      }
+    },
+    [onSubmit],
+  );
 
   return (
     <div className={classnames('input', className)}>
-      <input
-        ref={inputRef}
-        onKeyPress={useCallback(handleChange, [onSubmit])}
-        {...inputProps}
-      />
-      <button onClick={useCallback(handleClick, [inputRef])}>
+      <input ref={inputRef} onKeyPress={handleChange} {...inputProps} />
+      <button className="btn btn__primary" onClick={handleClick}>
         {buttonName}
       </button>
     </div>

@@ -1,10 +1,17 @@
 $white: #ffffff;
 $grey: #919094;
-$dark-grey: #4E4d54;
-$primary: #ffa86a;
+$dark-grey: darken($grey, 32%);
+$darker-grey: lighten($dark-grey, 38%);
+$primary: #fd9564;
+$red: #e3463f;
+$dark-red: darken($red, 8%);
+$green: #26b83f;
+$dark-green: darken($green, 8%);
+$purple: #b46382;
+$blue: #213862;
 
 $color-bg: #222129;
-$color-href: #b46382;
+$color-light-bg: lighten($color-bg, 4%);
 $color-font: #ffffff;
 
 // ========================================================
@@ -33,7 +40,24 @@ input {
 }
 
 a {
-  color: $color-href;
+  color: $purple;
+}
+button {
+  color: $white;
+}
+
+.btn {
+  min-width: rem(88px);
+  padding-left: rem(12px);
+  padding-right: rem(12px);
+
+  &__primary {
+    @include btnColor($primary);
+  }
+
+  &__red {
+    @include btnColor($red);
+  }
 }
 
 input,
@@ -73,4 +97,9 @@ html,
 body,
 #root {
   height: 100%;
+}
+
+// : CUSTOM
+.ReactCollapse--collapse {
+  transition: height 200ms;
 }

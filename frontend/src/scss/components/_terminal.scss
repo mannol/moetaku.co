@@ -1,0 +1,58 @@
+.terminal {
+  position: relative;
+  width: 100%;
+  border-radius: rem(6px);
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: rem(44px);
+    padding-top: rem(36px);
+  }
+
+  &__status {
+    z-index: 1;
+    background-color: $dark-grey;
+    border-top-left-radius: rem(6px);
+    border-top-right-radius: rem(6px);
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    border-bottom: solid rem(1px) $red;
+  }
+
+  &__status-url {
+    flex: 1;
+    padding: rem(13px) rem(16px);
+    color: $grey;
+  }
+
+  &__connection-info {
+    position: absolute;
+    top: rem(44px);
+    width: 100%;
+    box-sizing: border-box;
+    border-top-left-radius: rem(6px);
+    border-top-right-radius: rem(6px);
+    color: $white;
+    line-height: rem(36px);
+    height: rem(44px);
+    padding: 0 rem(16px);
+    background-color: $blue;
+    transition: all 0.3s;
+
+    a {
+      color: $primary;
+    }
+
+    &--visible {
+      top: 0;
+    }
+  }
+
+  &__logs {
+    z-index: 1;
+  }
+}

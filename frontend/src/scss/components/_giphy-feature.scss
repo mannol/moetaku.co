@@ -1,6 +1,5 @@
 .giphy-feature {
   width: rem(500px);
-  height: rem(318px);
 
   &__src {
     height: rem(30px);
@@ -9,8 +8,9 @@
   }
 
   &__img {
-    border: solid rem(1px) $grey;
-    border-top-left-radius: rem(6px);
-    border-top-right-radius: rem(6px);
+    width: 100%;
+    min-height: rem(289.5px);
+    border: solid rem(1px) $dark-grey;
+    border-radius: rem(8px);
   }
 }

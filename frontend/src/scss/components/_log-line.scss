@@ -1,0 +1,77 @@
+.log-line {
+  width: 100%;
+
+  &__status-button {
+    padding: 0 rem(16px);
+    height: rem(44px);
+    width: 100%;
+    display: flex;
+    background-color: $dark-grey;
+    cursor: pointer;
+    align-items: center;
+
+    &:hover {
+      background-color: darken($dark-grey, 3%);
+    }
+
+    &:active {
+      background-color: darken($dark-grey, 6%);
+    }
+  }
+
+  &__status {
+    box-sizing: border-box;
+    flex: 1;
+    height: rem(44px);
+    text-align: left;
+    line-height: rem(44px);
+    padding: 0 rem(12px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__status-code {
+    &--success {
+      width: rem(28px);
+      color: $green;
+    }
+
+    &--failure {
+      width: rem(28px);
+      color: $red;
+    }
+  }
+
+  &__pending-icon {
+    width: rem(16px);
+    height: rem(16px);
+    margin-right: rem(6px);
+    margin-left: rem(6px);
+    color: $grey;
+  }
+
+  &__chevron-icon {
+    width: rem(24px);
+    height: rem(24px);
+
+    transition: all 0.1s;
+    transition-timing-function: ease-in-out;
+
+    &--expanded {
+      transform: rotate(-180deg);
+    }
+  }
+
+  &__details {
+    padding: rem(6px) 0;
+    background-color: $color-light-bg;
+    color: $grey;
+    border-left: solid rem(1px) $purple;
+
+    p {
+      padding: rem(11px) rem(28px);
+      margin: 0;
+    }
+  }
+}
