@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { selectDestinationUrl } from '../redux/selectors';
+import { selectDestinationUrl, selectProxyUrl } from '../redux/selectors';
 import { setDestinationUrl } from '../redux/actions';
 
 import GiphyFeature from '../components/GiphyFeature';
@@ -11,7 +11,9 @@ import Terminal from '../components/Terminal';
 const handleNoop = () => {};
 const Page = () => {
   const dispatch = useDispatch();
+
   const destinationUrl = useSelector(selectDestinationUrl);
+  const proxyUrl = useSelector(selectProxyUrl);
 
   const handleSetDestinationUrl = useCallback(
     (url) => dispatch(setDestinationUrl(url)),
@@ -32,6 +34,7 @@ const Page = () => {
           <Terminal
             className="page__terminal"
             destinationUrl={destinationUrl}
+            proxyUrl={proxyUrl}
             buttonName="STOP"
             onToggleExpand={handleNoop}
             onStop={handleStopProxy}
