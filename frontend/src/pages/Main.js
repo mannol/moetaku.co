@@ -1,7 +1,11 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { selectDestinationUrl, selectProxyUrl } from '../redux/selectors';
+import {
+  selectDestinationUrl,
+  selectProxyUrl,
+  selectLogs,
+} from '../redux/selectors';
 import { setDestinationUrl } from '../redux/actions';
 
 import GiphyFeature from '../components/GiphyFeature';
@@ -14,6 +18,7 @@ const Page = () => {
 
   const destinationUrl = useSelector(selectDestinationUrl);
   const proxyUrl = useSelector(selectProxyUrl);
+  const logs = useSelector(selectLogs);
 
   const handleSetDestinationUrl = useCallback(
     (url) => dispatch(setDestinationUrl(url)),
@@ -38,6 +43,7 @@ const Page = () => {
             buttonName="STOP"
             onToggleExpand={handleNoop}
             onStop={handleStopProxy}
+            logs={logs}
           />
         ) : (
           <Input

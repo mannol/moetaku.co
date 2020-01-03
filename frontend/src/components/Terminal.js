@@ -3,43 +3,13 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import Logs from './Logs';
-import * as constants from '../constants';
-
-const exampleLines = [
-  {
-    id: '1',
-    title: 'GET /example/',
-    status: constants.LOG_STATUS_PENDING,
-    isExpanded: true,
-    duration: 0,
-    code: -1,
-    message:
-      'GET /example/\nHTTP 2\nlocation: https://www.google.com/\ncontent-type: text/html; charset=UTF-8',
-  },
-  {
-    id: '2',
-    title: 'GET /graphql/',
-    status: constants.LOG_STATUS_SUCCESS,
-    duration: 230,
-    code: 200,
-    message:
-      'GET /example/\nHTTP 2\nlocation: https://www.google.com/\ncontent-type: text/html; charset=UTF-8',
-  },
-  {
-    id: '3',
-    title:
-      'Connecting Connecting Connecting Connecting Connecting Connecting Connecting Connecting Connecting Connecting ',
-    status: constants.LOG_STATUS_FAILURE,
-    duration: 3000,
-    code: 404,
-  },
-];
 
 const Component = ({
   className,
   destinationUrl,
   proxyUrl,
   buttonName,
+  logs,
   onToggleExpand,
   onStop,
 }) => {
@@ -60,7 +30,7 @@ const Component = ({
           </button>
         </div>
         <div className="terminal__logs">
-          <Logs lines={exampleLines} onToggleExpand={onToggleExpand}></Logs>
+          <Logs logs={logs} onToggleExpand={onToggleExpand}></Logs>
         </div>
       </div>
     </div>
@@ -72,6 +42,7 @@ Component.propTypes = {
   destinationUrl: PropTypes.string.isRequired,
   proxyUrl: PropTypes.string,
   buttonName: PropTypes.string.isRequired,
+  logs: Logs.propTypes.logs,
   onToggleExpand: PropTypes.func.isRequired,
   onStop: PropTypes.func.isRequired,
 };
