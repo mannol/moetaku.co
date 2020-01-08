@@ -62,8 +62,7 @@ const Page = () => {
             autoFocus={true}
             className="page__input"
             onSubmit={handleSetDestinationUrl}
-            placeholder="Enter the destination URL, i.e. http://localhost:8080"
-            defaultValue="http://localhost:7898"
+            placeholder="Enter the destination URL, i.e. http://localhost:3000"
             buttonName="START"
           />
         )}
