@@ -126,8 +126,8 @@ const createProxyChannel = (destinationUrl) =>
           id: msg.id,
           title: `${_.toUpper(msg.method)} ${msg.url}`,
           details: [
-            `> ${_.toUpper(msg.method)} ${msg.url}`,
-            _.map(msg.headers, (val, key) => `> ${key}: ${val}`).join('\n'),
+            `>>> ${_.toUpper(msg.method)} ${msg.url}`,
+            _.map(msg.headers, (val, key) => `${key}: ${val}`).join('\n'),
           ],
         }),
       ),
@@ -136,8 +136,8 @@ const createProxyChannel = (destinationUrl) =>
       emit(
         updateLogLine(res.request.id, {
           details: [
-            `< ${_.toUpper(res.status)}`,
-            _.map(res.headers, (val, key) => `< ${key}: ${val}`).join('\n'),
+            `<<< ${_.toUpper(res.status)}`,
+            _.map(res.headers, (val, key) => `${key}: ${val}`).join('\n'),
           ],
           code: res.status,
           status:

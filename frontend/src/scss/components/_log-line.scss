@@ -67,11 +67,22 @@
     padding: rem(6px) 0;
     background-color: $color-light-bg;
     color: $grey;
-    border-left: solid rem(1px) $purple;
 
     p {
+      position: relative;
+
       padding: rem(11px) rem(28px);
       margin: 0;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: rem(8px);
+        bottom: rem(8px);
+        left: rem(6px);
+        width: rem(2px);
+        background-color: $purple;
+      }
     }
   }
 }
