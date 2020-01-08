@@ -16,11 +16,16 @@
 
   &__input {
     margin-top: rem(100px);
-    margin-bottom: rem(12px);
+    margin-bottom: rem(56px);
   }
 
   &__terminal {
     margin-top: rem(64px);
+    margin-bottom: rem(56px);
+  }
+
+  &__help {
+    margin-top: rem(20px);
     margin-bottom: rem(12px);
   }
 }

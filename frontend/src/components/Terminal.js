@@ -23,7 +23,7 @@ const Component = ({
         >
           Available at:{' '}
           {proxyUrl && (
-            <a href={proxyUrl} target="_blank">
+            <a href={proxyUrl} target="_blank" rel="noopener noreferrer">
               {proxyUrl}
             </a>
           )}

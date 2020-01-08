@@ -66,7 +66,9 @@ export const reducer = (state = defaultState, action) => {
       const el = {
         ...state[idx],
         ...action.payload.updates,
-        details: _.concat(state[idx].details, action.payload.updates.details),
+        details: _.compact(
+          _.concat(state[idx].details, action.payload.updates.details),
+        ),
       };
       return [...state.slice(0, idx), el, ...state.slice(idx + 1)];
     case CLEAR_LOGS:

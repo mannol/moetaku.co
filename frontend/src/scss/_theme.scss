@@ -1,7 +1,7 @@
 $white: #ffffff;
 $grey: #919094;
 $dark-grey: darken($grey, 32%);
-$darker-grey: lighten($dark-grey, 38%);
+$light-grey: lighten($dark-grey, 38%);
 $primary: #fd9564;
 $red: #e3463f;
 $dark-red: darken($red, 8%);
@@ -17,6 +17,16 @@ $color-font: #ffffff;
 // ========================================================
 // : COLORS
 // ========================================================
+.primary {
+  color: $primary;
+}
+.purple {
+  color: $purple;
+}
+.dark-red {
+  color: $dark-red;
+}
+
 body {
   background-color: $color-bg;
   color: $color-font;

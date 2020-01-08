@@ -1,0 +1,48 @@
+.help {
+  width: 100%;
+  background-color: $color-light-bg;
+  border: solid rem(1px) $dark-grey;
+  border-radius: rem(6px);
+  padding: rem(24px);
+  box-sizing: border-box;
+  color: $light-grey;
+
+  p:first-child {
+    margin-top: 0;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  &__title {
+    font-size: rem(22px);
+    font-weight: bold;
+
+    &::before {
+      content: '::';
+      padding-right: rem(8px);
+    }
+  }
+  &__paragraph {
+    font-size: rem(16px);
+  }
+
+  &__code {
+    position: relative;
+    border-radius: rem(6px);
+    margin-top: rem(12px);
+    padding: rem(12px) rem(24px);
+    background-color: $color-bg;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: rem(14px);
+      bottom: rem(14px);
+      left: rem(12px);
+      width: rem(2px);
+      background-color: $purple;
+      // padding-right: rem(8px);
+    }
+  }
+}
