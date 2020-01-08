@@ -46,6 +46,11 @@ const Component = ({ whatIsCorsUrl, howToConfigureCorsUrl, ...props }) => (
         USING WILDCARD CORS HEADERS IN PRODUCTION IS A SECURITY VULNERABILITY!
       </strong>
     </HelpParagraph>
+    <HelpParagraph>
+      NOTE: For better user experience, moetaku.co intercepts OPTIONS request
+      from the client accessing public resource. This may affect your App
+      behaviour.
+    </HelpParagraph>
   </HelpContainer>
 );
 
