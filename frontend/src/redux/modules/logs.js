@@ -1,4 +1,6 @@
 import _ from 'lodash';
+import nanoid from 'nanoid';
+import * as constants from '../../constants';
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -18,7 +20,15 @@ export const createLogLine = (line) => {
   return {
     type: CREATE_LOG_LINE,
     payload: {
-      line,
+      line: {
+        id: nanoid(),
+        title: '',
+        details: [],
+        code: -1,
+        status: constants.LOG_STATUS_PENDING,
+        duration: 0,
+        ...line,
+      },
     },
   };
 };
@@ -53,7 +63,11 @@ export const reducer = (state = defaultState, action) => {
       if (idx === -1) {
         return state;
       }
-      const el = { ...state[idx], ...action.payload.updates };
+      const el = {
+        ...state[idx],
+        ...action.payload.updates,
+        details: _.concat(state[idx].details, action.payload.updates.details),
+      };
       return [...state.slice(0, idx), el, ...state.slice(idx + 1)];
     case CLEAR_LOGS:
       return [];

@@ -21,7 +21,12 @@ const Component = ({
             'terminal__connection-info--visible': !!proxyUrl,
           })}
         >
-          Available at: {proxyUrl && <a href={proxyUrl}>{proxyUrl}</a>}
+          Available at:{' '}
+          {proxyUrl && (
+            <a href={proxyUrl} target="_blank">
+              {proxyUrl}
+            </a>
+          )}
         </div>
         <div className="terminal__status">
           <span className="terminal__status-url">{destinationUrl}</span>

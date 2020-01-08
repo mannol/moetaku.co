@@ -1,5 +1,5 @@
 {
-  "plugins": ["fp", "react-hooks", "prettier"],
+  "plugins": ["react-hooks", "prettier"],
 
   "extends": [
     "react-app",
@@ -104,23 +104,6 @@
     "prefer-const": ["error", { "destructuring": "any" }],
     "prefer-arrow-callback": "error",
     "func-style": ["error", "expression"],
-
-    "fp/no-arguments": "error",
-    "fp/no-class": "error",
-    "fp/no-delete": "error",
-    "fp/no-mutating-assign": "error",
-    "fp/no-mutating-methods": ["error", { "allowedObjects": ["draft"] }],
-    "fp/no-mutation": [
-      "warn",
-      {
-        "commonjs": true,
-        "exceptions": [
-          { "property": "propTypes" },
-          { "property": "defaultProps" },
-          { "object": "draft" }
-        ]
-      }
-    ],
 
     "react/boolean-prop-naming": "error",
     "react/destructuring-assignment": ["error", "always"],

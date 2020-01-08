@@ -1,4 +1,6 @@
 import './scss/main.scss';
+import 'abortcontroller-polyfill';
+import 'isomorphic-fetch';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

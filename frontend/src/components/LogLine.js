@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { UnmountClosed } from 'react-collapse';
@@ -43,7 +43,7 @@ const Component = ({
               'log-line__status-code--failure': isError,
             })}
           >
-            {code}
+            {code === -1 ? 'ERR' : code}
           </div>
         )}
         <div className="log-line__status">{title}</div>
@@ -58,7 +58,15 @@ const Component = ({
       <UnmountClosed isOpened={isExpanded}>
         <div className="log-line__details">
           {details.map((detail, index) => (
-            <p key={index}>{detail}</p>
+            <p key={index}>
+              {detail &&
+                detail.split('\n').map((line, lineIdx) => (
+                  <Fragment key={lineIdx}>
+                    {line}
+                    <br />
+                  </Fragment>
+                ))}
+            </p>
           ))}
         </div>
       </UnmountClosed>
