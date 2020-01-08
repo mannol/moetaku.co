@@ -42,6 +42,7 @@ const Page = () => {
     <div className="page">
       <div className="page__container">
         <GiphyFeature
+          className="page__feature"
           src="https://media.giphy.com/media/4KayUq2zLBjby/giphy.gif"
           giphySrc="https://giphy.com/gifs/animated-pixel-art-4KayUq2zLBjby"
         />

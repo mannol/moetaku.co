@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
-const Component = ({ src, giphySrc }) => (
-  <div className="giphy-feature">
+const Component = ({ className, src, giphySrc }) => (
+  <div className={classnames('giphy-feature', className)}>
     <img className="giphy-feature__img" alt="Feature Gif" src={src} />
     <a
       target="_blank"
@@ -16,6 +17,7 @@ const Component = ({ src, giphySrc }) => (
 );
 
 Component.propTypes = {
+  className: PropTypes.string,
   src: PropTypes.string.isRequired,
   giphySrc: PropTypes.string.isRequired,
 };

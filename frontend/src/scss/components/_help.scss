@@ -25,6 +25,9 @@
   }
   &__paragraph {
     font-size: rem(16px);
+    @media only screen and (max-width: $md) {
+      font-size: rem(13px);
+    }
   }
 
   &__code {
@@ -34,6 +37,8 @@
     margin-top: rem(12px);
     padding: rem(12px) rem(24px);
     background-color: $color-bg;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     &::before {
       content: '';

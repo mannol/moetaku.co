@@ -12,19 +12,42 @@
     flex-direction: column;
     align-items: center;
 
-    width: rem(768px);
-    padding-top: rem(112px);
-    padding-bottom: rem(88px);
+    width: 100%;
+    max-width: rem(768px);
+    padding: rem(112px) rem(24px) rem(88px);
+
+    @media only screen and (max-width: $xs) {
+      padding: 0 rem(24px) rem(32px);
+    }
+    @media only screen and (max-width: $md) {
+      box-sizing: border-box;
+    }
+  }
+
+  &__feature {
+    @media only screen and (max-width: $xs) {
+      display: none;
+    }
   }
 
   &__input {
     margin-top: rem(100px);
     margin-bottom: rem(56px);
+
+    @media only screen and (max-width: $xs) {
+      margin-top: rem(48px);
+      margin-bottom: rem(24px);
+    }
   }
 
   &__terminal {
     margin-top: rem(64px);
     margin-bottom: rem(56px);
+
+    @media only screen and (max-width: $xs) {
+      margin-top: rem(12px);
+      margin-bottom: rem(24px);
+    }
   }
 
   &__help {

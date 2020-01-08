@@ -78,6 +78,8 @@
 
       padding: rem(11px) rem(28px);
       margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       &::before {
         content: '';

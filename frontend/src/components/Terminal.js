@@ -29,7 +29,7 @@ const Component = ({
           )}
         </div>
         <div className="terminal__status">
-          <span className="terminal__status-url">{destinationUrl}</span>
+          <div className="terminal__status-url">{destinationUrl}</div>
           <button className="btn btn__red" onClick={onStop}>
             {buttonName}
           </button>

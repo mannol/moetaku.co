@@ -4,17 +4,21 @@
   border-top: solid rem(0.5px) $dark-grey;
 
   &__container {
-    // background-color: yellow;
     box-sizing: border-box;
     color: $grey;
-    padding: 0 rem(12px);
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: auto;
 
-    width: rem(768px);
+    width: 100%;
+    max-width: rem(768px);
     height: 100%;
+
+    padding: 0 rem(12px);
+    @media only screen and (max-width: $md) {
+      padding: 0 rem(24px);
+    }
   }
 
   &__left {
@@ -25,6 +29,12 @@
         padding: 0 rem(6px);
         color: $dark-grey;
       }
+    }
+  }
+
+  &__right {
+    @media only screen and (max-width: $xs) {
+      display: none;
     }
   }
 }
