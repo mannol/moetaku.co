@@ -15,9 +15,9 @@ const Component = ({ githubUrl, ...props }) => (
     </HelpParagraph>
     <HelpParagraph>
       It is especially useful for developers who want to showcase their work to
-      collegues without the hassle of hosting work-in-progress anywhere. Similar
-      tools for more advance usages exist (such as ngrok) but, moetaku.co tries
-      to be simple to use for very limited usecase.
+      colleagues without the hassle of hosting work-in-progress anywhere.
+      Similar tools (such as ngrok) for more advance usage exist but, moetaku.co
+      tries to be simple to use for its purpose.
     </HelpParagraph>
     <HelpParagraph>
       <strong>
@@ -26,7 +26,7 @@ const Component = ({ githubUrl, ...props }) => (
           open source
         </a>
       </strong>
-      , so you can host it yourself.
+      .
     </HelpParagraph>
   </HelpContainer>
 );
