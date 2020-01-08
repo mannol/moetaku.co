@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const Component = ({ className, githubUrl, issueTrackerUrl }) => {
+const Footer = ({ className, githubUrl, issueTrackerUrl }) => {
   return (
     <div className={classnames('footer', className)}>
       <div className="footer__container">
@@ -24,10 +24,10 @@ const Component = ({ className, githubUrl, issueTrackerUrl }) => {
   );
 };
 
-Component.propTypes = {
+Footer.propTypes = {
   className: PropTypes.string,
   githubUrl: PropTypes.string,
   issueTrackerUrl: PropTypes.string,
 };
 
-export default Component;
+export default Footer;

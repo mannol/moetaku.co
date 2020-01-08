@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import Logs from './Logs';
 
-const Component = ({
+const Terminal = ({
   className,
   destinationUrl,
   proxyUrl,
@@ -42,7 +42,7 @@ const Component = ({
   );
 };
 
-Component.propTypes = {
+Terminal.propTypes = {
   className: PropTypes.string.isRequired,
   destinationUrl: PropTypes.string.isRequired,
   proxyUrl: PropTypes.string,
@@ -52,4 +52,4 @@ Component.propTypes = {
   onStop: PropTypes.func.isRequired,
 };
 
-export default Component;
+export default Terminal;

@@ -5,7 +5,7 @@ import HelpContainer from '../components/Help/Container';
 import HelpParagraph from '../components/Help/Paragraph';
 import HelpTitle from '../components/Help/Title';
 
-const Component = ({ githubUrl, ...props }) => (
+const WhatIsThis = ({ githubUrl, ...props }) => (
   <HelpContainer {...props}>
     <HelpTitle color="primary">What is this?</HelpTitle>
     <HelpParagraph>
@@ -31,8 +31,8 @@ const Component = ({ githubUrl, ...props }) => (
   </HelpContainer>
 );
 
-Component.propTypes = {
+WhatIsThis.propTypes = {
   githubUrl: PropTypes.string.isRequired,
 };
 
-export default Component;
+export default WhatIsThis;

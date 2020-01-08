@@ -19,7 +19,7 @@ import Terminal from '../components/Terminal';
 import WhatIsThis from '../components/WhatIsThis';
 import AboutCors from '../components/AboutCors';
 
-const Page = () => {
+const Main = () => {
   const dispatch = useDispatch();
 
   const destinationUrl = useSelector(selectDestinationUrl);
@@ -84,4 +84,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Main;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import LogLine from './LogLine';
 
-const Component = ({ logs, onToggleExpand }) => (
+const Logs = ({ logs, onToggleExpand }) => (
   <>
     {logs.map((line) => (
       <LogLine {...line} key={line.id} onToggleExpand={onToggleExpand} />
@@ -12,11 +12,11 @@ const Component = ({ logs, onToggleExpand }) => (
   </>
 );
 
-Component.propTypes = {
+Logs.propTypes = {
   logs: PropTypes.arrayOf(
     PropTypes.shape(_.omit(LogLine.propTypes, 'onToggleExpand')),
   ).isRequired,
   onToggleExpand: PropTypes.func.isRequired,
 };
 
-export default Component;
+export default Logs;

@@ -6,7 +6,7 @@ import { FiChevronDown, FiPlay } from 'react-icons/fi';
 
 import * as constants from '../constants';
 
-const Component = ({
+const LogLine = ({
   id,
   title,
   details,
@@ -79,11 +79,11 @@ const Component = ({
   );
 };
 
-Component.defaultProps = {
+LogLine.defaultProps = {
   details: [],
 };
 
-Component.propTypes = {
+LogLine.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   details: PropTypes.arrayOf(PropTypes.string),
@@ -99,4 +99,4 @@ Component.propTypes = {
   onToggleExpand: PropTypes.func.isRequired,
 };
 
-export default Component;
+export default LogLine;

@@ -2,7 +2,7 @@ import React, { useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const Component = ({ className, buttonName, onSubmit, ...inputProps }) => {
+const Input = ({ className, buttonName, onSubmit, ...inputProps }) => {
   const inputRef = useRef();
 
   const handleClick = useCallback(() => {
@@ -30,10 +30,10 @@ const Component = ({ className, buttonName, onSubmit, ...inputProps }) => {
   );
 };
 
-Component.propTypes = {
+Input.propTypes = {
   className: PropTypes.string,
   buttonName: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default Component;
+export default Input;

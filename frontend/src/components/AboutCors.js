@@ -6,7 +6,7 @@ import HelpCode from '../components/Help/Code';
 import HelpParagraph from '../components/Help/Paragraph';
 import HelpTitle from '../components/Help/Title';
 
-const Component = ({ whatIsCorsUrl, howToConfigureCorsUrl, ...props }) => (
+const AboutCors = ({ whatIsCorsUrl, howToConfigureCorsUrl, ...props }) => (
   <HelpContainer {...props}>
     <HelpTitle color="dark-red">About CORS</HelpTitle>
     <HelpParagraph>
@@ -54,9 +54,9 @@ const Component = ({ whatIsCorsUrl, howToConfigureCorsUrl, ...props }) => (
   </HelpContainer>
 );
 
-Component.propTypes = {
+AboutCors.propTypes = {
   whatIsCorsUrl: PropTypes.string.isRequired,
   howToConfigureCorsUrl: PropTypes.string.isRequired,
 };
 
-export default Component;
+export default AboutCors;

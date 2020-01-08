@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const Component = ({ className, ...props }) => (
+const HelpCode = ({ className, ...props }) => (
   <code className={classnames('help__code', className)} {...props} />
 );
 
-Component.propTypes = {
+HelpCode.propTypes = {
   className: PropTypes.string,
 };
 
-export default Component;
+export default HelpCode;
