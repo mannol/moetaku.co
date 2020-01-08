@@ -12,6 +12,7 @@ import {
   updateLogLine,
 } from '../redux/actions';
 
+import Footer from '../components/Footer';
 import GiphyFeature from '../components/GiphyFeature';
 import Input from '../components/Input';
 import Terminal from '../components/Terminal';
@@ -75,6 +76,10 @@ const Page = () => {
           howToConfigureCorsUrl="https://www.google.com/search?q=how+to+configure+cors+in+%5BENTER+YOUR+TECH+STACK+HERE%5D"
         />
       </div>
+      <Footer
+        githubUrl="https://github.com/mannol/moetaku.co"
+        issueTrackerUrl="https://github.com/mannol/moetaku.co/issues"
+      />
     </div>
   );
 };

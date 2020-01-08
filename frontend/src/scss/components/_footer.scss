@@ -1,0 +1,30 @@
+.footer {
+  width: 100%;
+  height: rem(64px);
+  border-top: solid rem(0.5px) $dark-grey;
+
+  &__container {
+    // background-color: yellow;
+    box-sizing: border-box;
+    color: $grey;
+    padding: 0 rem(12px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+
+    width: rem(768px);
+    height: 100%;
+  }
+
+  &__left {
+    display: flex;
+    div:not(:last-child) {
+      &::after {
+        content: '•';
+        padding: 0 rem(6px);
+        color: $dark-grey;
+      }
+    }
+  }
+}
