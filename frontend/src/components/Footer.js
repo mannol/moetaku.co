@@ -30,4 +30,4 @@ Footer.propTypes = {
   issueTrackerUrl: PropTypes.string,
 };
 
-export default Footer;
+export default React.memo(Footer);

@@ -59,4 +59,4 @@ AboutCors.propTypes = {
   howToConfigureCorsUrl: PropTypes.string.isRequired,
 };
 
-export default AboutCors;
+export default React.memo(AboutCors);

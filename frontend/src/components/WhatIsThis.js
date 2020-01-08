@@ -35,4 +35,4 @@ WhatIsThis.propTypes = {
   githubUrl: PropTypes.string.isRequired,
 };
 
-export default WhatIsThis;
+export default React.memo(WhatIsThis);

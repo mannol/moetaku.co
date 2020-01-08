@@ -99,4 +99,4 @@ LogLine.propTypes = {
   onToggleExpand: PropTypes.func.isRequired,
 };
 
-export default LogLine;
+export default React.memo(LogLine);
