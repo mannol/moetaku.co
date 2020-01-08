@@ -27,7 +27,11 @@ const Main = () => {
   const logs = useSelector(selectLogs);
 
   const handleSetDestinationUrl = useCallback(
-    (url) => dispatch(createConnection(url)),
+    (url) => {
+      if (url) {
+        dispatch(createConnection(url));
+      }
+    },
     [dispatch],
   );
   const handleStopProxy = useCallback(() => dispatch(closeConnection()), [
