@@ -2,6 +2,8 @@ import _ from 'lodash';
 import nanoid from 'nanoid';
 import * as constants from '../../constants';
 
+const { REACT_APP_MAX_LOG_SIZE = 24 } = process.env;
+
 ///////////////////////////////////////////////////////////////////////////////
 //
 // :: CONSTANTS
@@ -57,7 +59,7 @@ const defaultState = [];
 export const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case CREATE_LOG_LINE:
-      return [action.payload.line, ...state].slice(0, 1000);
+      return [action.payload.line, ...state].slice(0, REACT_APP_MAX_LOG_SIZE);
     case UPDATE_LOG_LINE:
       const idx = _.findIndex(state, ['id', action.payload.id]);
       if (idx === -1) {
