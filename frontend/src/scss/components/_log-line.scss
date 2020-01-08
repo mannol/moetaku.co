@@ -31,6 +31,11 @@
     text-overflow: ellipsis;
   }
 
+  &__duration {
+    padding: 0 rem(12px);
+    color: $grey;
+  }
+
   &__status-code {
     &--success {
       width: rem(28px);

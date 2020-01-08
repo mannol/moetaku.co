@@ -46,7 +46,12 @@ const Component = ({
             {code === -1 ? 'ERR' : code}
           </div>
         )}
-        <div className="log-line__status">{title}</div>
+        <div className="log-line__status">
+          {title}
+          {!!duration && (
+            <span className="log-line__duration">{duration} ms</span>
+          )}
+        </div>
         {isComplete && (
           <FiChevronDown
             className={classnames('log-line__chevron-icon', {
