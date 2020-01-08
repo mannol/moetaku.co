@@ -13,7 +13,7 @@ const Footer = ({ className, githubUrl, issueTrackerUrl }) => {
             </a>
           </div>
           <div>
-            <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+            <a href={issueTrackerUrl} target="_blank" rel="noopener noreferrer">
               Report a Bug
             </a>
           </div>
