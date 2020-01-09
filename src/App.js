@@ -1,3 +1,7 @@
+import './scss/main.scss';
+import 'isomorphic-fetch';
+import 'abortcontroller-polyfill';
+
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 

@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import useSSR from 'use-ssr';
 
 import {
   selectDestinationUrl,
@@ -20,6 +21,7 @@ import WhatIsThis from '../components/WhatIsThis';
 import AboutCors from '../components/AboutCors';
 
 const Main = () => {
+  const { isBrowser } = useSSR();
   const dispatch = useDispatch();
 
   const destinationUrl = useSelector(selectDestinationUrl);
@@ -78,6 +80,7 @@ const Main = () => {
           className="page__help"
           whatIsCorsUrl="https://www.codecademy.com/articles/what-is-cors"
           howToConfigureCorsUrl="https://www.google.com/search?q=how+to+configure+cors+in+%5BENTER+YOUR+TECH+STACK+HERE%5D"
+          currentLocation={isBrowser ? window.location.href : '*'}
         />
       </div>
       <Footer

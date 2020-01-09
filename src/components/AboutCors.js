@@ -6,7 +6,12 @@ import HelpCode from '../components/Help/Code';
 import HelpParagraph from '../components/Help/Paragraph';
 import HelpTitle from '../components/Help/Title';
 
-const AboutCors = ({ whatIsCorsUrl, howToConfigureCorsUrl, ...props }) => (
+const AboutCors = ({
+  whatIsCorsUrl,
+  howToConfigureCorsUrl,
+  currentLocation,
+  ...props
+}) => (
   <HelpContainer {...props}>
     <HelpTitle color="dark-red">About CORS</HelpTitle>
     <HelpParagraph>
@@ -33,7 +38,7 @@ const AboutCors = ({ whatIsCorsUrl, howToConfigureCorsUrl, ...props }) => (
       </a>{' '}
       but, for the best moetaku.co experience, send these headers:
       <HelpCode>
-        Access-Control-Allow-Origin: {window.location.href}
+        Access-Control-Allow-Origin: {currentLocation}
         <br />
         Access-Control-Allow-Credentials: *<br /> Access-Control-Allow-Headers:
         *<br />
@@ -57,6 +62,7 @@ const AboutCors = ({ whatIsCorsUrl, howToConfigureCorsUrl, ...props }) => (
 AboutCors.propTypes = {
   whatIsCorsUrl: PropTypes.string.isRequired,
   howToConfigureCorsUrl: PropTypes.string.isRequired,
+  currentLocation: PropTypes.string.isRequired,
 };
 
 export default React.memo(AboutCors);
