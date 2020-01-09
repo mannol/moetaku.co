@@ -1,0 +1,22 @@
+server:
+  - ./src/server/*
+  - ./server.js
+  - ./tools/loop.js
+
+frontend:
+  - ./public/*
+  - ./src/*.js
+  - ./src/components/*
+  - ./src/constants/*
+  - ./src/pages/*
+  - ./src/redux/*
+  - ./src/scss/*
+  - ./src/util/*
+
+config:
+  - ./.*
+  - ./nodemon.json
+
+deps-changed:
+  - ./package.json
+  - ./yarn.lock
