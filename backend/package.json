@@ -19,8 +19,10 @@
         "jsonwebtoken": "^8.5.1",
         "lodash": "^4.17.15",
         "moment": "^2.24.0",
+        "morgan": "^1.9.1",
         "nanoid": "^2.1.8",
         "nanoid-dictionary": "^2.0.0",
+        "node-fetch": "^2.6.0",
         "socket.io": "^2.3.0",
         "winston": "^3.2.1"
     },
