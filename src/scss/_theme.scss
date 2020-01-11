@@ -27,9 +27,11 @@ $xl: '1200px';
 .primary {
   color: $primary;
 }
+
 .purple {
   color: $purple;
 }
+
 .dark-red {
   color: $dark-red;
 }
@@ -59,6 +61,7 @@ input {
 a {
   color: $purple;
 }
+
 button {
   color: $white;
 }
@@ -92,12 +95,6 @@ button {
 html {
   font-family: 'Fira Code', monospace;
   font-size: 100%;
-}
-
-@supports (font-variation-settings: normal) {
-  html {
-    font-family: 'Fira Code VF', monospace;
-  }
 }
 
 body {
