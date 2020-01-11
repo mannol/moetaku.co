@@ -51,11 +51,15 @@ const handleReply = (socket, id, res) => {
     clearHandlers();
     res.end();
   };
+  const handleError = (data) => {
+    sendError(502, _.toString(data) || 'Bad Gateway');
+  };
   const clearHandlers = () => {
     socket.removeListener(`#status-${id}`, handleStatus);
     socket.removeListener(`#headers-${id}`, handleHeaders);
     socket.removeListener(`#body-${id}`, handleBody);
     socket.removeListener(`#end-${id}`, handleEnd);
+    socket.removeListener(`#error-${id}`, handleError);
 
     if (id in socket._timeouts) {
       clearTimeout(socket._timeouts[id]);
@@ -67,11 +71,7 @@ const handleReply = (socket, id, res) => {
   const sendError = (status, message) => {
     clearHandlers();
     if (!res.headersSent) {
-      res
-        .set('Content-Type', 'text/html; charset=utf-8')
-        .set('Content-Length', message.length + 1)
-        .status(status)
-        .send(message + '\n');
+      res.renderError(status, message);
     } else {
       // in case the body was already sent, close the connection
       res.connection.destroy();
@@ -92,20 +92,21 @@ const handleReply = (socket, id, res) => {
   socket.on(`#headers-${id}`, handleHeaders);
   socket.on(`#body-${id}`, handleBody);
   socket.on(`#end-${id}`, handleEnd);
+  socket.on(`#error-${id}`, handleError);
 };
 
 const handleRequest = async (req, res) => {
   const { subdomain, connections } = req.context;
 
   if (!subdomain || !(subdomain in connections)) {
-    res.status(502).send('No Gateway To ' + (req.headers.host || 'unkown'));
+    res.renderError(502, 'No Gateway To ' + (req.headers.host || 'unkown'));
     return;
   }
 
   const socket = connections[subdomain];
 
   if (_.keys(socket._messages).length >= MAX_REQ_SIZE) {
-    res.status(503).send('Max Request Queue Size Reached: ' + MAX_REQ_SIZE);
+    res.renderError(503, 'Max Request Queue Size Reached: ' + MAX_REQ_SIZE);
     return;
   }
 

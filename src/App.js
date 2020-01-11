@@ -5,16 +5,18 @@ import 'abortcontroller-polyfill';
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Main from './pages/Main';
-import Error from './pages/Error';
+import MainPage from './pages/Main';
+import ErrorPage from './pages/Error';
+
+const Error404Page = (props) => (
+  <ErrorPage title="404 - Not Found" {...props} />
+);
 
 const App = () => {
   return (
     <Switch>
-      <Route exact path="/" component={Main} />
-      <Route path="*">
-        <Error title="404 - Not Found" />
-      </Route>
+      <Route exact path="/" component={MainPage} />
+      <Route path="*" component={Error404Page} />
     </Switch>
   );
 };

@@ -7,6 +7,7 @@ import winston from 'winston';
 import apiController from './controllers/api';
 import tunnelController from './controllers/tunnel';
 import createContextMiddleware from './middlewares/createContext';
+import createErrorRendererMiddleware from './middlewares/createErrorRenderer';
 import registerSocketioPlugin from './plugins/registerSocketio';
 
 const { NODE_ENV, PORT } = process.env;
@@ -28,7 +29,8 @@ const run = async () => {
   const app = express();
   const server = http.createServer(app);
 
-  const hasSubdomain = (req) => !!req.context.subdomain;
+  const hasSubdomainAndNotError = (req) =>
+    !!req.context.subdomain && !req.context.error;
 
   app
     .enable('trust proxy')
@@ -42,14 +44,18 @@ const run = async () => {
       }),
     )
     .use(createContextMiddleware({ connections }))
-    .use(conditional(hasSubdomain, tunnelController))
+    .use(
+      createErrorRendererMiddleware({
+        app,
+        hasRenderer: NODE_ENV !== 'development',
+      }),
+    )
+    .use(conditional(hasSubdomainAndNotError, tunnelController))
     .use('/api', apiController);
 
   if (NODE_ENV !== 'development') {
     const renderController = (await import('./controllers/render')).default;
-    const staticController = (await import('./controllers/static')).default;
-
-    app.use(renderController).use(staticController);
+    app.use(renderController);
   }
 
   registerSocketioPlugin({ connections })(server);

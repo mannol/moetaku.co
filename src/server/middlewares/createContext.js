@@ -1,5 +1,6 @@
 export default (defaultContext) => (req, res, next) => {
-  req.context = {
+  // don't reset context when retriggering the middleware manually
+  req.context = req.context || {
     ...defaultContext,
     subdomain: req.subdomains.reverse().join('.'),
   };

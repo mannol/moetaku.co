@@ -5,7 +5,10 @@ import Footer from '../components/Footer';
 import GiphyFeature from '../components/GiphyFeature';
 import ErrorInfo from '../components/ErrorInfo';
 
-const Error = ({ title }) => {
+const Error = ({ title, staticContext }) => {
+  const errorTitle =
+    staticContext && staticContext.error ? staticContext.error.message : title;
+
   return (
     <div className="page">
       <div className="page__container">
@@ -16,7 +19,7 @@ const Error = ({ title }) => {
         />
         <ErrorInfo
           className="page__help"
-          title={title}
+          title={errorTitle}
           errorsHardUrl="https://xkcd.com/1024/"
           issueTrackerUrl="https://github.com/mannol/moetaku.co/issues"
         />
@@ -31,6 +34,7 @@ const Error = ({ title }) => {
 
 Error.propTypes = {
   title: PropTypes.string,
+  staticContext: PropTypes.any,
 };
 
 export default Error;

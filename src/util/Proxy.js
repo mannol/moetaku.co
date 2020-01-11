@@ -192,13 +192,7 @@ class Proxy extends EventEmitter {
         return;
       }
 
-      this.socket.emit(`#status-${message.id}`, 502);
-      this.socket.emit(`#headers-${message.id}`, {
-        'content-type': 'text/html',
-        'content-length': 11,
-      });
-      this.socket.emit(`#body-${message.id}`, 'Bad Gateway');
-      this.socket.emit(`#end-${message.id}`, '');
+      this.socket.emit(`#error-${message.id}`, err.message);
 
       this.emit(Proxy.ON_PROXY_ERROR, {
         request: message,
