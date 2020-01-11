@@ -1,68 +1,91 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# [moetaku.co](https://moetaku.co)
 
-## Available Scripts
+Moetaku is an **http tunnel** that helps you **tunnel** your **local http traffic** via **public interface**.
 
-In the project directory, you can run:
+It is especially useful for developers who want to showcase their work to colleagues without the hassle of hosting work-in-progress anywhere. Similar tools (such as ngrok) for more advance usage exist but, moetaku tries to be simple to use for its purpose.
 
-### `yarn start`
+# How it works?
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Moetaku uses `socket.io` & `fetch` to tunnel HTTP requests. This diagram shows the path each request makes:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```
+[internet]        [moetaku.co]-(WS con)-[your browser]        [target]
+    |  1- REQ -->      |                      |                   |
+    |                  |    2- REQ (WS)-->    |                   |
+    |                  |                      | 3- REQ (fetch)--> |
+    |                  |                      | <--RES (fetch) -4 |
+    |                  |    <--RES (WS) -5    |                   |
+    |  <-- RES -5      |                      |                   |
+```
 
-### `yarn test`
+1. The client issues a request; by opening `example.moetaku.co` in his browser for example
+2. Moetaku receives the requests and looks up if there's a browser waiting for `example.moetaku.co` requests. If there is a browser waiting, the request is serialized and sent via WS to the browser.
+3. Browser receives the requests, parses the data and creates a fetch request to the configured target.
+4. If the target is available, they will respond to the request
+5. Browser, then, serializes the response and sends it to moetaku via WS
+6. Moetaku receives the response and forwards it to the agent that made the initial request.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Caveats
 
-### `yarn build`
+The tunnel should work out-of-the-box for common use cases, like showcasing react/vue/angular apps. However, being based on we technologies, there are few things to consider:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Target server should allow `Origin: https://moetaku.co` in its CORS settings
+2. For best user experience target server should also send these headers as a CORS preflight response:
+   ```http
+   Access-Control-Allow-Credentials: *
+   Access-Control-Allow-Headers: *
+   Access-Control-Allow-Methods: *
+   Access-Control-Expose-Headers: *
+   ```
+3. For convenience, `moetaku.co` will intercept OPTIONS request and reply to the original request (**1.**) instead of passing it down to the client.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+# Development
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project was bootstrapped with [create-react-app](https://github.com/facebook/create-react-app).
 
-### `yarn eject`
+Project has the following structure:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **public/** - public assets
+- **src/**
+  - **components/** - react components
+  - **constants/** - enum definitions
+  - **pages/** - react router pages
+  - **redux/**
+    - **modules/**
+      - **connection.js** - tunnel business logic and Proxy interface
+      - **\*.js** - common redux store logic
+    - **actions.js** - exports modules actions
+    - **reducers.js** - exports and configures modules' reducers
+    - **sagas.js** - exports and configures modules' sagas
+    - **selectors.js** - exports modules' selectors
+    - **store.js** - configure redux store
+  - **scss/** - styles
+  - **util/** - utilities, like Proxy logic
+  - **server/** - all the backend code is here
+- **tools/** - some helper tools; like `loop.js` testing utility
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Running production server
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Just execute `yarn start`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Running development server
 
-## Learn More
+For react dev server, run: `yarn start:dev:fe`
+For node dev server, run: `yarn start:dev:be`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[**TIP**]: I recommended running local DNS server with following configuration: `moetaku-local.co -> 127.0.0.1` & `*.moetaku-local.co -> 127.0.0.1`. In short, you want to forward all traffic, including traffic coming from subdomains to your servers.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+`moetaku-local.co:3000` should render an app
+`moetaku-local.co:5000` & `*.moetaku-local.co:5000` should point to the server
 
-### Code Splitting
+# Contributing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Everyone is open to contribute. Make sure to write decent code and commit messages.
 
-### Analyzing the Bundle Size
+# License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+MIT
 
-### Making a Progressive Web App
+# Copyright
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+(C) Eniz Vukovic & contributors
