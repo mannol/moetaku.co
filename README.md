@@ -27,7 +27,7 @@ Moetaku uses `socket.io` & `fetch` to tunnel HTTP requests. This diagram shows t
 
 # Caveats
 
-The tunnel should work out-of-the-box for common use cases, like showcasing react/vue/angular apps. However, being based on we technologies, there are few things to consider:
+The tunnel should work out-of-the-box for common use cases, like showcasing react/vue/angular apps. However, being based on web technologies, there are few things to consider:
 
 1. Target server should allow `Origin: https://moetaku.co` in its CORS settings
 2. For best user experience target server should also send these headers as a CORS preflight response:
